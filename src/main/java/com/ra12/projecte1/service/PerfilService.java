@@ -26,7 +26,7 @@ public class PerfilService {
         p.setSkills(dto.getSkills());
         p.setExperiencia(dto.getExperiencia());
         p.setLocalizacion(dto.getLocalizacion());
-        p.setFoto(null); // la parte de imagen la hará tu compañera
+        p.setFoto(null);
 
         repository.save(p);
     }

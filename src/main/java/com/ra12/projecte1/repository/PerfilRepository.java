@@ -47,7 +47,7 @@ public class PerfilRepository {
 
     public Perfil findById(int id) {
         String sql = "SELECT * FROM perfil WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
             Perfil p = new Perfil();
             p.setId(rs.getInt("id"));
             p.setNombre(rs.getString("nombre"));
@@ -58,6 +58,6 @@ public class PerfilRepository {
             p.setLocalizacion(rs.getString("localizacion"));
             p.setFoto(rs.getString("foto"));
             return p;
-        });
+        }, id);
     }
 }
