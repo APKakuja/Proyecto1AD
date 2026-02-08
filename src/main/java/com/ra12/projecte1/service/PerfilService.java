@@ -114,4 +114,36 @@ public class PerfilService {
         CustomLogging.info("PerfilService", "eliminarTodos", "Eliminando todos los perfiles");
         repository.eliminarTodos();
     }
+
+
+    //Subir una imagen
+    public void guardarImagen(int id, MultipartFile file) throws IOException {
+        String uploadDir = System.getProperty("user.dir") + "/uploads/";
+        File carpeta = new File(uploadDir);
+        if (!carpeta.exists()) {
+            carpeta.mkdirs(); 
+        }   
+
+        String nombreArchivo = id + "_" + file.getOriginalFilename().replaceAll(" ", "_");
+        File destino = new File(uploadDir + nombreArchivo);
+        file.transferTo(destino);
+
+        repository.guardarImagen(id, nombreArchivo);
+    }
+
+
+    // Actualizar perfil por id
+    public void actualizarPerfil(int id, Perfil perfil) {
+        repository.actualizarPerfil(id, perfil);
+    }
+
+    // Eliminar un perfil por id
+    public void eliminarPorId(int id) {
+        repository.eliminarPorId(id);
+    }
+
+    // Eliminar todos los perfiles
+    public void eliminarTodos() {
+        repository.eliminarTodos();
+    }
 }
