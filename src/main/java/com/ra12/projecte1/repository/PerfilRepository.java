@@ -60,4 +60,36 @@ public class PerfilRepository {
             return p;
         }, id);
     }
+
+    public void guardarImagen(int id, String rutaImagen) {
+        String sql = "UPDATE perfil SET foto = ? WHERE id = ?";
+        jdbcTemplate.update(sql, rutaImagen, id);
+    }
+
+    // Update por id
+    public void actualizarPerfil(int id, Perfil perfil) {
+        String sql = "UPDATE perfil SET nombre=?, descripcion=?, profesion=?, skills=?, experiencia=?, localizacion=? WHERE id=?";
+        jdbcTemplate.update(sql,
+                perfil.getNombre(),
+                perfil.getDescripcion(),
+                perfil.getProfesion(),
+                perfil.getSkills(),
+                perfil.getExperiencia(),
+                perfil.getLocalizacion(),
+                id
+        );
+    }
+
+    // Delete por id
+    public void eliminarPorId(int id) {
+        String sql = "DELETE FROM perfil WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+    // Delete todos los registros
+    public void eliminarTodos() {
+        String sql = "DELETE FROM perfil";
+        jdbcTemplate.update(sql);
+    }
+
 }
