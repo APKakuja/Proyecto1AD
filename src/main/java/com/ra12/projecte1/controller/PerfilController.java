@@ -1,10 +1,9 @@
 package com.ra12.projecte1.controller;
 
 import com.ra12.projecte1.dto.PerfilDTO;
+import com.ra12.projecte1.logging.CustomLogging;
 import com.ra12.projecte1.model.Perfil;
 import com.ra12.projecte1.service.PerfilService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +15,6 @@ import java.util.List;
 public class PerfilController {
 
     private final PerfilService service;
-    private final Logger logger = LoggerFactory.getLogger(PerfilController.class);
 
     public PerfilController(PerfilService service) {
         this.service = service;
@@ -25,64 +23,71 @@ public class PerfilController {
     @PostMapping("/csv")
     public String importarCSV(@RequestParam("file") MultipartFile file) {
         try {
-            logger.info("Importando CSV...");
+            CustomLogging.info("PerfilController", "importarCSV", "Importando CSV...");
             service.importarCSV(new InputStreamReader(file.getInputStream()));
-            logger.info("CSV importado correctamente");
+            CustomLogging.info("PerfilController", "importarCSV", "CSV importado correctamente");
             return "CSV importado correctamente";
         } catch (Exception e) {
-            logger.error("Error al importar CSV", e);
+            CustomLogging.error("PerfilController", "importarCSV", "Error al importar CSV: " + e.getMessage());
             return "Error al importar CSV";
         }
     }
 
     @PostMapping
     public String crearPerfil(@RequestBody PerfilDTO dto) {
-        logger.info("Creando perfil...");
+        CustomLogging.info("PerfilController", "crearPerfil", "Creando perfil...");
         service.crearPerfil(dto);
-        logger.info("Perfil creado");
+        CustomLogging.info("PerfilController", "crearPerfil", "Perfil creado correctamente");
         return "Perfil creado";
     }
 
     @GetMapping
     public List<Perfil> obtenerTodos() {
-        logger.info("Obteniendo todos los perfiles");
+        CustomLogging.info("PerfilController", "obtenerTodos", "Obteniendo todos los perfiles");
         return service.obtenerTodos();
     }
 
     @GetMapping("/{id}")
     public Perfil obtenerPorId(@PathVariable int id) {
-        logger.info("Obteniendo perfil con id {}", id);
+        CustomLogging.info("PerfilController", "obtenerPorId", "Obteniendo perfil con id=" + id);
         return service.obtenerPorId(id);
     }
 
-     @PostMapping("/{id}/imagen")
+    @PostMapping("/{id}/imagen")
     public String subirImagen(@PathVariable int id, @RequestParam("file") MultipartFile file) {
         try {
+            CustomLogging.info("PerfilController", "subirImagen", "Subiendo imagen para id=" + id);
             service.guardarImagen(id, file);
+            CustomLogging.info("PerfilController", "subirImagen", "Imagen subida correctamente");
             return "Imagen subida correctamente";
         } catch (Exception e) {
+            CustomLogging.error("PerfilController", "subirImagen", "Error al subir imagen: " + e.getMessage());
             return "Error al subir imagen: " + e.getMessage();
         }
     }
 
     @PutMapping("/{id}")
     public String actualizarPerfil(@PathVariable int id, @RequestBody Perfil perfil) {
+        CustomLogging.info("PerfilController", "actualizarPerfil", "Actualizando perfil id=" + id);
         service.actualizarPerfil(id, perfil);
+        CustomLogging.info("PerfilController", "actualizarPerfil", "Perfil actualizado correctamente");
         return "Perfil actualizado";
     }
 
     @DeleteMapping("/{id}")
     public String eliminarPerfil(@PathVariable int id) {
+        CustomLogging.info("PerfilController", "eliminarPerfil", "Eliminando perfil id=" + id);
         service.eliminarPorId(id);
+        CustomLogging.info("PerfilController", "eliminarPerfil", "Perfil eliminado correctamente");
         return "Perfil eliminado";
     }
 
     @DeleteMapping
     public String eliminarTodos() {
+        CustomLogging.info("PerfilController", "eliminarTodos", "Eliminando todos los perfiles");
         service.eliminarTodos();
+        CustomLogging.info("PerfilController", "eliminarTodos", "Todos los perfiles eliminados");
         return "Todos los perfiles eliminados";
     }
-
-   
 }
 
