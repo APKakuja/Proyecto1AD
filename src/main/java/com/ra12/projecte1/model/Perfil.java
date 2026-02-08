@@ -2,6 +2,8 @@ package com.ra12.projecte1.model;
 
 public class Perfil {
 
+    // Getters y setters de Perfil para tabla
+
     private int id;
     private String nombre;
     private String descripcion;

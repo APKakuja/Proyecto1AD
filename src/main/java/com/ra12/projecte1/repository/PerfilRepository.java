@@ -28,7 +28,7 @@ public class PerfilRepository {
                 perfil.getFoto()
         );
     }
-
+// Find all para encontrar todos los perfiles
     public List<Perfil> findAll() {
         String sql = "SELECT * FROM perfil";
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
@@ -44,7 +44,7 @@ public class PerfilRepository {
             return p;
         });
     }
-
+// Select para encontrar perfil especifico a traves de ID
     public Perfil findById(int id) {
         String sql = "SELECT * FROM perfil WHERE id = ?";
         return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> {
@@ -66,7 +66,7 @@ public class PerfilRepository {
         jdbcTemplate.update(sql, rutaImagen, id);
     }
 
-    // Update por id
+    // Update de perfil especificado por id
     public void actualizarPerfil(int id, Perfil perfil) {
         String sql = "UPDATE perfil SET nombre=?, descripcion=?, profesion=?, skills=?, experiencia=?, localizacion=? WHERE id=?";
         jdbcTemplate.update(sql,
@@ -86,7 +86,7 @@ public class PerfilRepository {
         jdbcTemplate.update(sql, id);
     }
 
-    // Delete todos los registros
+    // Delete todos los registros.
     public void eliminarTodos() {
         String sql = "DELETE FROM perfil";
         jdbcTemplate.update(sql);
