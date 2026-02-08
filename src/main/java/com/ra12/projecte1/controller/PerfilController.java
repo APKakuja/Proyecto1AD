@@ -55,6 +55,34 @@ public class PerfilController {
         return service.obtenerPorId(id);
     }
 
+     @PostMapping("/{id}/imagen")
+    public String subirImagen(@PathVariable int id, @RequestParam("file") MultipartFile file) {
+        try {
+            service.guardarImagen(id, file);
+            return "Imagen subida correctamente";
+        } catch (Exception e) {
+            return "Error al subir imagen: " + e.getMessage();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public String actualizarPerfil(@PathVariable int id, @RequestBody Perfil perfil) {
+        service.actualizarPerfil(id, perfil);
+        return "Perfil actualizado";
+    }
+
+    @DeleteMapping("/{id}")
+    public String eliminarPerfil(@PathVariable int id) {
+        service.eliminarPorId(id);
+        return "Perfil eliminado";
+    }
+
+    @DeleteMapping
+    public String eliminarTodos() {
+        service.eliminarTodos();
+        return "Todos los perfiles eliminados";
+    }
+
    
 }
 

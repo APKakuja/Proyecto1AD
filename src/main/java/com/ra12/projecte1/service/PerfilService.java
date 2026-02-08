@@ -4,8 +4,11 @@ import com.ra12.projecte1.dto.PerfilDTO;
 import com.ra12.projecte1.model.Perfil;
 import com.ra12.projecte1.repository.PerfilRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
@@ -13,6 +16,7 @@ import java.util.List;
 public class PerfilService {
 
     private final PerfilRepository repository;
+    private final String uploadDir = "uploads/"; 
 
     public PerfilService(PerfilRepository repository) {
         this.repository = repository;
@@ -26,7 +30,6 @@ public class PerfilService {
         p.setSkills(dto.getSkills());
         p.setExperiencia(dto.getExperiencia());
         p.setLocalizacion(dto.getLocalizacion());
-        p.setFoto(null); // la parte de imagen la hará tu compañera
 
         repository.save(p);
     }
@@ -49,7 +52,7 @@ public class PerfilService {
             String[] campos = linea.split(",");
 
             if (campos.length < 6) {
-                continue;
+                continue; 
             }
 
             PerfilDTO dto = new PerfilDTO();
@@ -62,5 +65,37 @@ public class PerfilService {
 
             crearPerfil(dto);
         }
+    }
+
+
+    //Subir una imagen
+    public void guardarImagen(int id, MultipartFile file) throws IOException {
+        String uploadDir = System.getProperty("user.dir") + "/uploads/";
+        File carpeta = new File(uploadDir);
+        if (!carpeta.exists()) {
+            carpeta.mkdirs(); 
+        }   
+
+        String nombreArchivo = id + "_" + file.getOriginalFilename().replaceAll(" ", "_");
+        File destino = new File(uploadDir + nombreArchivo);
+        file.transferTo(destino);
+
+        repository.guardarImagen(id, nombreArchivo);
+    }
+
+
+    // Actualizar perfil por id
+    public void actualizarPerfil(int id, Perfil perfil) {
+        repository.actualizarPerfil(id, perfil);
+    }
+
+    // Eliminar un perfil por id
+    public void eliminarPorId(int id) {
+        repository.eliminarPorId(id);
+    }
+
+    // Eliminar todos los perfiles
+    public void eliminarTodos() {
+        repository.eliminarTodos();
     }
 }
