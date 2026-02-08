@@ -54,4 +54,7 @@ public class PerfilController {
         logger.info("Obteniendo perfil con id {}", id);
         return service.obtenerPorId(id);
     }
+
+   
 }
+
