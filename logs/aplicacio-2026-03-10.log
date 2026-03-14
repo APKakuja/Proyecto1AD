@@ -1,0 +1,39 @@
+[2026-03-10 18:46:08] INFO - PerfilController - crearPerfil - Creando perfil...
+[2026-03-10 18:46:08] INFO - PerfilService - crearPerfil - Creando nuevo perfil
+[2026-03-10 18:48:24] INFO - PerfilController - crearPerfil - Creando perfil...
+[2026-03-10 18:48:24] INFO - PerfilService - crearPerfil - Creando nuevo perfil
+[2026-03-10 18:48:24] INFO - PerfilService - crearPerfil - Perfil creado correctamente
+[2026-03-10 18:48:24] INFO - PerfilController - crearPerfil - Perfil creado correctamente
+[2026-03-10 18:49:47] INFO - PerfilController - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:49:47] INFO - PerfilService - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:49:59] INFO - PerfilController - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:49:59] INFO - PerfilService - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:50:08] INFO - PerfilController - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:50:08] INFO - PerfilService - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:52:05] INFO - PerfilController - crearPerfil - Creando perfil...
+[2026-03-10 18:52:05] INFO - PerfilService - crearPerfil - Creando nuevo perfil
+[2026-03-10 18:52:05] INFO - PerfilService - crearPerfil - Perfil creado correctamente
+[2026-03-10 18:52:05] INFO - PerfilController - crearPerfil - Perfil creado correctamente
+[2026-03-10 18:52:28] INFO - PerfilController - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:52:28] INFO - PerfilService - obtenerTodos - Obteniendo todos los perfiles
+[2026-03-10 18:52:49] INFO - PerfilController - obtenerPorId - Obteniendo perfil con id=1
+[2026-03-10 18:52:49] INFO - PerfilService - obtenerPorId - Buscando perfil con id=1
+[2026-03-10 18:57:19] INFO - ChatController - crearChat - Recibido perfilId=1
+[2026-03-10 18:57:19] INFO - ChatService - crearChat - Creando chat para perfilId=1
+[2026-03-10 18:57:19] INFO - ChatService - crearChat - Chat creado correctamente
+[2026-03-10 19:02:30] INFO - ChatController - crearChat - Creando chat para perfilId=1
+[2026-03-10 19:02:30] INFO - ChatService - crearChat - Creando chat para perfilId=1
+[2026-03-10 19:02:30] INFO - ChatService - crearChat - Chat creado correctamente
+[2026-03-10 19:02:34] INFO - ChatController - crearChat - Creando chat para perfilId=2
+[2026-03-10 19:02:34] INFO - ChatService - crearChat - Creando chat para perfilId=2
+[2026-03-10 19:02:34] INFO - ChatService - crearChat - Chat creado correctamente
+[2026-03-10 19:02:53] INFO - ChatController - obtenerChats - Obteniendo chats del perfilId=1
+[2026-03-10 19:02:53] INFO - ChatService - obtenerChatsPorPerfil - Obteniendo chats para perfilId=1
+[2026-03-10 19:03:06] INFO - ChatController - obtenerChats - Obteniendo chats del perfilId=2
+[2026-03-10 19:03:06] INFO - ChatService - obtenerChatsPorPerfil - Obteniendo chats para perfilId=2
+[2026-03-10 19:04:23] INFO - ChatController - obtenerChatPorId - Obteniendo chat con id=1
+[2026-03-10 19:04:23] INFO - ChatService - obtenerChatPorId - Buscando chat con id=1
+[2026-03-10 19:04:33] INFO - ChatController - obtenerChatPorId - Obteniendo chat con id=2
+[2026-03-10 19:04:33] INFO - ChatService - obtenerChatPorId - Buscando chat con id=2
+[2026-03-10 19:04:42] INFO - ChatController - obtenerChatPorId - Obteniendo chat con id=1
+[2026-03-10 19:04:42] INFO - ChatService - obtenerChatPorId - Buscando chat con id=1

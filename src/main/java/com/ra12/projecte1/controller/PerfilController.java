@@ -20,6 +20,7 @@ public class PerfilController {
         this.service = service;
     }
 
+    // Importar perfiles desde CSV
     @PostMapping("/csv")
     public String importarCSV(@RequestParam("file") MultipartFile file) {
         try {
@@ -33,6 +34,7 @@ public class PerfilController {
         }
     }
 
+    // Crear un nuevo perfil
     @PostMapping
     public String crearPerfil(@RequestBody PerfilDTO dto) {
         CustomLogging.info("PerfilController", "crearPerfil", "Creando perfil...");
@@ -41,18 +43,21 @@ public class PerfilController {
         return "Perfil creado";
     }
 
+    // Obtener todos los perfiles
     @GetMapping
     public List<Perfil> obtenerTodos() {
         CustomLogging.info("PerfilController", "obtenerTodos", "Obteniendo todos los perfiles");
         return service.obtenerTodos();
     }
 
+    // Obtener perfil por id
     @GetMapping("/{id}")
     public Perfil obtenerPorId(@PathVariable int id) {
         CustomLogging.info("PerfilController", "obtenerPorId", "Obteniendo perfil con id=" + id);
         return service.obtenerPorId(id);
     }
 
+    // Subir imagen para un perfil
     @PostMapping("/{id}/imagen")
     public String subirImagen(@PathVariable int id, @RequestParam("file") MultipartFile file) {
         try {
@@ -66,6 +71,7 @@ public class PerfilController {
         }
     }
 
+    // Actualizar perfil por id
     @PutMapping("/{id}")
     public String actualizarPerfil(@PathVariable int id, @RequestBody Perfil perfil) {
         CustomLogging.info("PerfilController", "actualizarPerfil", "Actualizando perfil id=" + id);
@@ -74,6 +80,7 @@ public class PerfilController {
         return "Perfil actualizado";
     }
 
+    // Eliminar perfil por id
     @DeleteMapping("/{id}")
     public String eliminarPerfil(@PathVariable int id) {
         CustomLogging.info("PerfilController", "eliminarPerfil", "Eliminando perfil id=" + id);
@@ -82,6 +89,7 @@ public class PerfilController {
         return "Perfil eliminado";
     }
 
+    // Eliminar todos los perfiles
     @DeleteMapping
     public String eliminarTodos() {
         CustomLogging.info("PerfilController", "eliminarTodos", "Eliminando todos los perfiles");
@@ -90,4 +98,3 @@ public class PerfilController {
         return "Todos los perfiles eliminados";
     }
 }
-

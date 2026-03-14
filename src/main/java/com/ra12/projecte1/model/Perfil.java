@@ -1,77 +1,52 @@
 package com.ra12.projecte1.model;
 
+import java.time.LocalDateTime;
+
 public class Perfil {
 
     private int id;
     private String nombre;
     private String descripcion;
-    private String profesion;
+    private String genero;
+    private String puesto;
     private String skills;
     private int experiencia;
     private String localizacion;
-    private String foto; // ruta o nombre de archivo
+    private String fotoUrl;
+    private int edad;
+    private LocalDateTime createdAt;
 
-    public int getId() {
-        return id;
-    }
+    // Getters y Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getGenero() { return genero; }
+    public void setGenero(String genero) { this.genero = genero; }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public String getPuesto() { return puesto; }
+    public void setPuesto(String puesto) { this.puesto = puesto; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public String getSkills() { return skills; }
+    public void setSkills(String skills) { this.skills = skills; }
 
-    public String getProfesion() {
-        return profesion;
-    }
+    public int getExperiencia() { return experiencia; }
+    public void setExperiencia(int experiencia) { this.experiencia = experiencia; }
 
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
-    }
+    public String getLocalizacion() { return localizacion; }
+    public void setLocalizacion(String localizacion) { this.localizacion = localizacion; }
 
-    public String getSkills() {
-        return skills;
-    }
+    public String getFotoUrl() { return fotoUrl; }
+    public void setFotoUrl(String fotoUrl) { this.fotoUrl = fotoUrl; }
 
-    public void setSkills(String skills) {
-        this.skills = skills;
-    }
+    public int getEdad() { return edad; }
+    public void setEdad(int edad) { this.edad = edad; }
 
-    public int getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
-    }
-
-    public String getLocalizacion() {
-        return localizacion;
-    }
-
-    public void setLocalizacion(String localizacion) {
-        this.localizacion = localizacion;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }

@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -29,10 +30,14 @@ public class PerfilService {
         Perfil p = new Perfil();
         p.setNombre(dto.getNombre());
         p.setDescripcion(dto.getDescripcion());
-        p.setProfesion(dto.getProfesion());
+        p.setGenero(dto.getGenero());
+        p.setPuesto(dto.getPuesto());
         p.setSkills(dto.getSkills());
         p.setExperiencia(dto.getExperiencia());
         p.setLocalizacion(dto.getLocalizacion());
+        p.setEdad(dto.getEdad());
+        p.setFotoUrl(dto.getFotoUrl());
+        p.setCreatedAt(LocalDateTime.now());
 
         repository.save(p);
 
@@ -55,14 +60,14 @@ public class PerfilService {
         BufferedReader br = new BufferedReader(reader);
         String linea;
 
-        br.readLine();
+        br.readLine(); 
 
         int count = 0;
 
         while ((linea = br.readLine()) != null) {
             String[] campos = linea.split(",");
 
-            if (campos.length < 6) {
+            if (campos.length < 8) {
                 CustomLogging.error("PerfilService", "importarCSV", "Línea inválida: " + linea);
                 continue;
             }
@@ -70,10 +75,12 @@ public class PerfilService {
             PerfilDTO dto = new PerfilDTO();
             dto.setNombre(campos[0]);
             dto.setDescripcion(campos[1]);
-            dto.setProfesion(campos[2]);
-            dto.setSkills(campos[3]);
-            dto.setExperiencia(Integer.parseInt(campos[4]));
-            dto.setLocalizacion(campos[5]);
+            dto.setGenero(campos[2]);
+            dto.setPuesto(campos[3]);
+            dto.setSkills(campos[4]);
+            dto.setExperiencia(Integer.parseInt(campos[5]));
+            dto.setLocalizacion(campos[6]);
+            dto.setEdad(Integer.parseInt(campos[7]));
 
             crearPerfil(dto);
             count++;
@@ -82,9 +89,9 @@ public class PerfilService {
         CustomLogging.info("PerfilService", "importarCSV", "CSV importado. Registros=" + count);
     }
 
-
     public void actualizarPerfil(int id, Perfil perfil) {
         CustomLogging.info("PerfilService", "actualizarPerfil", "Actualizando perfil id=" + id);
+        perfil.setCreatedAt(LocalDateTime.now());
         repository.actualizarPerfil(id, perfil);
     }
 
@@ -98,20 +105,17 @@ public class PerfilService {
         repository.eliminarTodos();
     }
 
-
     public void guardarImagen(int id, MultipartFile file) throws IOException {
-        String uploadDir = System.getProperty("user.dir") + "/uploads/";
-        File carpeta = new File(uploadDir);
+        String rutaUpload = System.getProperty("user.dir") + "/uploads/";
+        File carpeta = new File(rutaUpload);
         if (!carpeta.exists()) {
             carpeta.mkdirs(); 
         }   
 
         String nombreArchivo = id + "_" + file.getOriginalFilename().replaceAll(" ", "_");
-        File destino = new File(uploadDir + nombreArchivo);
+        File destino = new File(rutaUpload + nombreArchivo);
         file.transferTo(destino);
 
         repository.guardarImagen(id, nombreArchivo);
     }
-
-
 }

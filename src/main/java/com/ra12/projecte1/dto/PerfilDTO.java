@@ -4,56 +4,39 @@ public class PerfilDTO {
 
     private String nombre;
     private String descripcion;
-    private String profesion;
+    private String genero;
+    private String puesto;
     private String skills;
     private int experiencia;
     private String localizacion;
+    private String fotoUrl;
+    private int edad;
 
-    public String getNombre() {
-        return nombre;
-    }
+    // Getters y Setters
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getDescripcion() { return descripcion; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public String getGenero() { return genero; }
+    public void setGenero(String genero) { this.genero = genero; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public String getPuesto() { return puesto; }
+    public void setPuesto(String puesto) { this.puesto = puesto; }
 
-    public String getProfesion() {
-        return profesion;
-    }
+    public String getSkills() { return skills; }
+    public void setSkills(String skills) { this.skills = skills; }
 
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
-    }
+    public int getExperiencia() { return experiencia; }
+    public void setExperiencia(int experiencia) { this.experiencia = experiencia; }
 
-    public String getSkills() {
-        return skills;
-    }
+    public String getLocalizacion() { return localizacion; }
+    public void setLocalizacion(String localizacion) { this.localizacion = localizacion; }
 
-    public void setSkills(String skills) {
-        this.skills = skills;
-    }
+    public String getFotoUrl() { return fotoUrl; }
+    public void setFotoUrl(String fotoUrl) { this.fotoUrl = fotoUrl; }
 
-    public int getExperiencia() {
-        return experiencia;
-    }
-
-    public void setExperiencia(int experiencia) {
-        this.experiencia = experiencia;
-    }
-
-    public String getLocalizacion() {
-        return localizacion;
-    }
-
-    public void setLocalizacion(String localizacion) {
-        this.localizacion = localizacion;
-    }
+    public int getEdad() { return edad; }
+    public void setEdad(int edad) { this.edad = edad; }
 }
