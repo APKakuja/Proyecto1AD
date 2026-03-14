@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 public class Perfil {
 
+    // Getters y setters de Perfil para tabla
+
     private int id;
     private String nombre;
     private String descripcion;
