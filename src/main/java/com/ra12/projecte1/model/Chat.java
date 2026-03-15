@@ -8,6 +8,7 @@ public class Chat {
     private int perfilId; 
     private String ultimaFrase;
     private LocalDateTime fechaUltimoMensaje;
+    private String nickname;
 
     public Chat() {}
 
@@ -43,4 +44,7 @@ public class Chat {
     public void setFechaUltimoMensaje(LocalDateTime fechaUltimoMensaje) {
         this.fechaUltimoMensaje = fechaUltimoMensaje;
     }
+
+    public String getNickname() { return nickname; } 
+    public void setNickname(String nickname) { this.nickname = nickname; }  
 }

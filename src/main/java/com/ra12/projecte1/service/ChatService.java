@@ -1,12 +1,13 @@
 package com.ra12.projecte1.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.ra12.projecte1.logging.CustomLogging;
 import com.ra12.projecte1.model.Chat;
 import com.ra12.projecte1.repository.ChatRepository;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Service
 public class ChatService {
@@ -25,6 +26,10 @@ public class ChatService {
         repository.save(chat);
     }
 
+    public void actualizarNickname(int chatId, String nickname) {
+        repository.updateNickname(chatId, nickname);
+    }
+
     public List<Chat> obtenerChatsPorPerfil(int perfilId) {
         return repository.findByPerfilId(perfilId);
     }
@@ -37,6 +42,7 @@ public class ChatService {
         return repository.findById(chatId);
     }
 
+    
     public void borrarChat(int id) {
         CustomLogging.info("ChatService", "borrarChat", "Borrando chat con id=" + id);
         repository.deleteById(id);

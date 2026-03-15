@@ -16,6 +16,7 @@ public class ChatRepository {
     public ChatRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
+    
 
     // Crear chat nuevo
     public void save(Chat chat) {
@@ -26,6 +27,12 @@ public class ChatRepository {
                 Timestamp.valueOf(chat.getFechaUltimoMensaje())
         );
     }
+
+    public void updateNickname(int chatId, String nickname) {
+        String sql = "UPDATE chat SET nickname = ? WHERE id = ?";
+        jdbcTemplate.update(sql, nickname, chatId);
+    }
+
       //buscar chats por perfil
     public List<Chat> findByPerfilId(int perfilId) {
         String sql = "SELECT * FROM chat WHERE perfil_id = ?";
@@ -64,7 +71,9 @@ public List<Chat> findAll() {
         chat.setPerfilId(rs.getInt("perfil_id"));
         chat.setUltimaFrase(rs.getString("ultima_frase"));
         chat.setFechaUltimoMensaje(rs.getTimestamp("fecha_ultimo_mensaje").toLocalDateTime());
+        chat.setNickname(rs.getString("nickname"));  
         return chat;
     });
 }
+
 }

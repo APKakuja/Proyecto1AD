@@ -1,13 +1,21 @@
 package com.ra12.projecte1.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.ra12.projecte1.logging.CustomLogging;
 import com.ra12.projecte1.model.Chat;
 import com.ra12.projecte1.model.Mensaje;
 import com.ra12.projecte1.service.ChatService;
 import com.ra12.projecte1.service.MensajeService;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/chats")
@@ -28,6 +36,13 @@ public class ChatController {
         return "Chat creado correctamente";
     }
 
+    @PutMapping("/{id}/nickname")
+    public String actualizarNickname(@PathVariable int id, @RequestParam("nickname") String nickname) {
+        CustomLogging.info("ChatController", "actualizarNickname", "Actualizando nickname del chat id=" + id);
+        service.actualizarNickname(id, nickname);
+        return "Nickname actualizado";
+    }
+
     @GetMapping
 public List<Chat> obtenerChats() {
     CustomLogging.info("ChatController", "obtenerChats", "Obteniendo todos los chats");
@@ -40,7 +55,6 @@ public List<Chat> obtenerChats() {
         return service.obtenerChatPorId(id);
     }
 
-    // ✅ NUEVO — borrar chat
     @DeleteMapping("/{id}")
     public String borrarChat(@PathVariable int id) {
         CustomLogging.info("ChatController", "borrarChat", "Borrando chat con id=" + id);
@@ -48,7 +62,6 @@ public List<Chat> obtenerChats() {
         return "Chat eliminado";
     }
 
-    // ✅ NUEVO — obtener mensajes de un chat
     @GetMapping("/{id}/mensajes")
     public List<Mensaje> getMensajesDeChat(@PathVariable int id) {
         CustomLogging.info("ChatController", "getMensajesDeChat", "Obteniendo mensajes del chat id=" + id);
