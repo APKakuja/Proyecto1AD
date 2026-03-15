@@ -17,26 +17,28 @@ public class ChatService {
         this.repository = repository;
     }
 
-    // Crear un chat al hacer match
     public void crearChat(int perfilId) {
-        CustomLogging.info("ChatService", "crearChat", "Creando chat para perfilId=" + perfilId);
-
         Chat chat = new Chat();
         chat.setPerfilId(perfilId);
-        chat.setUltimaFrase(""); 
+        chat.setUltimaFrase("");
         chat.setFechaUltimoMensaje(LocalDateTime.now());
-
         repository.save(chat);
-
-        CustomLogging.info("ChatService", "crearChat", "Chat creado correctamente");
     }
-     public List<Chat> obtenerChatsPorPerfil(int perfilId) {
-        CustomLogging.info("ChatService", "obtenerChatsPorPerfil", "Obteniendo chats para perfilId=" + perfilId);
+
+    public List<Chat> obtenerChatsPorPerfil(int perfilId) {
         return repository.findByPerfilId(perfilId);
     }
 
-    public Chat obtenerChatPorId(int chatId) {
-    CustomLogging.info("ChatService", "obtenerChatPorId", "Buscando chat con id=" + chatId);
-    return repository.findById(chatId);
+    public List<Chat> obtenerTodosLosChats() {
+    return repository.findAll();
 }
+
+    public Chat obtenerChatPorId(int chatId) {
+        return repository.findById(chatId);
+    }
+
+    public void borrarChat(int id) {
+        CustomLogging.info("ChatService", "borrarChat", "Borrando chat con id=" + id);
+        repository.deleteById(id);
+    }
 }

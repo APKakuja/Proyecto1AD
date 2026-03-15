@@ -7,7 +7,7 @@ public class PerfilDTO {
     private String genero;
     private String puesto;
     private String skills;
-    private int experiencia;
+    private String experiencia;  // ← CAMBIO: de int a String
     private String localizacion;
     private String fotoUrl;
     private int edad;
@@ -28,8 +28,8 @@ public class PerfilDTO {
     public String getSkills() { return skills; }
     public void setSkills(String skills) { this.skills = skills; }
 
-    public int getExperiencia() { return experiencia; }
-    public void setExperiencia(int experiencia) { this.experiencia = experiencia; }
+    public String getExperiencia() { return experiencia; }  // ← CAMBIO
+    public void setExperiencia(String experiencia) { this.experiencia = experiencia; }  // ← CAMBIO
 
     public String getLocalizacion() { return localizacion; }
     public void setLocalizacion(String localizacion) { this.localizacion = localizacion; }

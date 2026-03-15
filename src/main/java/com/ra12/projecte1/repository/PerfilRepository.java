@@ -1,11 +1,12 @@
 package com.ra12.projecte1.repository;
 
-import com.ra12.projecte1.model.Perfil;
+import java.sql.Timestamp;
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
-import java.util.List;
+import com.ra12.projecte1.model.Perfil;
 
 @Repository
 public class PerfilRepository {
@@ -45,7 +46,7 @@ public class PerfilRepository {
             p.setGenero(rs.getString("genero"));
             p.setPuesto(rs.getString("puesto"));
             p.setSkills(rs.getString("skills"));
-            p.setExperiencia(rs.getInt("experiencia"));
+            p.setExperiencia(rs.getString("experiencia"));  // ← CAMBIO
             p.setLocalizacion(rs.getString("localizacion"));
             p.setFotoUrl(rs.getString("foto_url"));
             p.setEdad(rs.getInt("edad"));
@@ -65,7 +66,7 @@ public class PerfilRepository {
             p.setGenero(rs.getString("genero"));
             p.setPuesto(rs.getString("puesto"));
             p.setSkills(rs.getString("skills"));
-            p.setExperiencia(rs.getInt("experiencia"));
+            p.setExperiencia(rs.getString("experiencia"));  // ← CAMBIO
             p.setLocalizacion(rs.getString("localizacion"));
             p.setFotoUrl(rs.getString("foto_url"));
             p.setEdad(rs.getInt("edad"));

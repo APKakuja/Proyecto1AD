@@ -1,18 +1,19 @@
 package com.ra12.projecte1.service;
 
-import com.ra12.projecte1.dto.PerfilDTO;
-import com.ra12.projecte1.logging.CustomLogging;
-import com.ra12.projecte1.model.Perfil;
-import com.ra12.projecte1.repository.PerfilRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ra12.projecte1.dto.PerfilDTO;
+import com.ra12.projecte1.logging.CustomLogging;
+import com.ra12.projecte1.model.Perfil;
+import com.ra12.projecte1.repository.PerfilRepository;
 
 @Service
 public class PerfilService {
@@ -78,7 +79,7 @@ public class PerfilService {
             dto.setGenero(campos[2]);
             dto.setPuesto(campos[3]);
             dto.setSkills(campos[4]);
-            dto.setExperiencia(Integer.parseInt(campos[5]));
+            dto.setExperiencia(campos[5]);
             dto.setLocalizacion(campos[6]);
             dto.setEdad(Integer.parseInt(campos[7]));
 

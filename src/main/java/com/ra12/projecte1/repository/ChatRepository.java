@@ -1,11 +1,12 @@
 package com.ra12.projecte1.repository;
 
-import com.ra12.projecte1.model.Chat;
+import java.sql.Timestamp;
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
-import java.util.List;
+import com.ra12.projecte1.model.Chat;
 
 @Repository
 public class ChatRepository {
@@ -48,5 +49,22 @@ public class ChatRepository {
         chat.setFechaUltimoMensaje(rs.getTimestamp("fecha_ultimo_mensaje").toLocalDateTime());
         return chat;
     }, chatId);
+}
+
+public void deleteById(int id) {
+    String sql = "DELETE FROM chat WHERE id = ?";
+    jdbcTemplate.update(sql, id);
+}
+
+public List<Chat> findAll() {
+    String sql = "SELECT * FROM chat";
+    return jdbcTemplate.query(sql, (rs, rowNum) -> {
+        Chat chat = new Chat();
+        chat.setId(rs.getInt("id"));
+        chat.setPerfilId(rs.getInt("perfil_id"));
+        chat.setUltimaFrase(rs.getString("ultima_frase"));
+        chat.setFechaUltimoMensaje(rs.getTimestamp("fecha_ultimo_mensaje").toLocalDateTime());
+        return chat;
+    });
 }
 }
